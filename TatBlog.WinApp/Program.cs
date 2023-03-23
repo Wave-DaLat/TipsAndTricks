@@ -4,22 +4,22 @@ using TatBlog.WinApp;
 
 var context = new BlogDbContext();
 
-IBlogRepository blogRepo = new BlogRepository(context);
+IBlogRepository blogrepo = new BlogRepository(context);
 
 var pagingParams = new PagingParams
 {
     PageNumber = 1,
-    PageSize = 5,
-    SortColumn = "Name",
-    SortOrder = "DESC",
+    PageSize = 20,
+    SortColumn = "name",
+    SortOrder = "desc",
 };
 
-var tagsList = await blogRepo.GetPagedTagsAsync(pagingParams);
+var tagslist = await blogrepo.GetPagedTagsAsync(pagingParams);
 
 Console.WriteLine("{0, -5}{1, -50}{2, 10}",
-    "ID", " Name", "Count");
+    "id", " name", "count");
 
-foreach (var item in tagsList)
+foreach (var item in tagslist)
 {
     Console.WriteLine("{0, -5}{1, -50}{2, 10}",
         item.Id, item.Name, item.PostCount);
