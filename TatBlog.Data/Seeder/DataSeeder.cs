@@ -134,11 +134,11 @@ public class DataSeeder : IDataSeeder
         {
             new()
             {
-                Title = "ASP.NET Core Diagnostic Scenarios",
+                Title = "ASP.NET Core Diagnostic Scenarios (1)",
                 ShortDescription = "David and friends has a great repos...",
                 Description = "Here's a few great DON'T and DO examples...",
                 Meta = "David and friends has a great repository filled...",
-                UrlSlug = "aspnet-core-diagnnostic-scenarios",
+                UrlSlug = "aspnet-core-diagnnostic-scenarios-1",
                 Published = true,
                 PostedDate = new DateTime(2021, 9, 30, 10, 20, 0),
                 ModifiedDate = null,
@@ -152,12 +152,84 @@ public class DataSeeder : IDataSeeder
             },
             new()
             {
+                Title = "ASP.NET Core Diagnostic Scenarios (2)",
+                ShortDescription = "David and friends has a great repos...",
+                Description = "Here's a few great DON'T and DO examples...",
+                Meta = "David and friends has a great repository filled...",
+                UrlSlug = "aspnet-core-diagnnostic-scenarios-2",
+                Published = true,
+                PostedDate = new DateTime(2021, 9, 30, 10, 20, 0),
+                ModifiedDate = null,
+                ViewCount = 4,
+                Author = authors[1],
+                Category = categories[0],
+                Tags = new List<Tag>()
+                {
+                    tags[1]
+                }
+            },
+            new()
+            {
+                Title = "ASP.NET Core Diagnostic Scenarios (3)",
+                ShortDescription = "David and friends has a great repos...",
+                Description = "Here's a few great DON'T and DO examples...",
+                Meta = "David and friends has a great repository filled...",
+                UrlSlug = "aspnet-core-diagnnostic-scenarios-3",
+                Published = true,
+                PostedDate = new DateTime(2021, 9, 30, 10, 20, 0),
+                ModifiedDate = null,
+                ViewCount = 15,
+                Author = authors[2],
+                Category = categories[0],
+                Tags = new List<Tag>()
+                {
+                    tags[1]
+                }
+            },
+            new()
+            {
+                Title = "ASP.NET Core Diagnostic Scenarios (4)",
+                ShortDescription = "David and friends has a great repos...",
+                Description = "Here's a few great DON'T and DO examples...",
+                Meta = "David and friends has a great repository filled...",
+                UrlSlug = "aspnet-core-diagnnostic-scenarios-4",
+                Published = true,
+                PostedDate = new DateTime(2021, 9, 30, 10, 20, 0),
+                ModifiedDate = null,
+                ViewCount = 8,
+                Author = authors[3],
+                Category = categories[0],
+                Tags = new List<Tag>()
+                {
+                    tags[1]
+                }
+            },
+            new()
+            {
+                Title = "ASP.NET Core Diagnostic Scenarios (5)",
+                ShortDescription = "David and friends has a great repos...",
+                Description = "Here's a few great DON'T and DO examples...",
+                Meta = "David and friends has a great repository filled...",
+                UrlSlug = "aspnet-core-diagnnostic-scenarios-5",
+                Published = true,
+                PostedDate = new DateTime(2021, 9, 30, 10, 20, 0),
+                ModifiedDate = null,
+                ViewCount = 20,
+                Author = authors[4],
+                Category = categories[0],
+                Tags = new List<Tag>()
+                {
+                    tags[1]
+                }
+            },
+            new()
+            {
 
-                Title = "Design Patterns Information",
+                Title = "Design Patterns Information (1)",
                 ShortDescription = "Design pattern in software engineering is a general, reusable solution to a commonly occurring problem in software design.",
                 Description = "Design patterns are used to solve these commonly occurring problems in the development phase so that we can minimize the problems after deployment. A design pattern suggests a specific implementation for the specific object-oriented programming problem. For example, if you want to ensure that only a single instance of a class exists, then you can use the Singleton design pattern which suggests the best way to create a class that can only have one object.",
                 Meta = "Nothing to read...",
-                UrlSlug = "design-patterns-information",
+                UrlSlug = "design-patterns-information-1",
                 Published = true,
                 PostedDate = new DateTime(2021, 10, 2, 8, 33, 2),
                 ModifiedDate = null,
@@ -171,11 +243,68 @@ public class DataSeeder : IDataSeeder
             },
             new()
             {
-                Title = "Architecture Art",
+
+                Title = "Design Patterns Information (2)",
+                ShortDescription = "Design pattern in software engineering is a general, reusable solution to a commonly occurring problem in software design.",
+                Description = "Design patterns are used to solve these commonly occurring problems in the development phase so that we can minimize the problems after deployment. A design pattern suggests a specific implementation for the specific object-oriented programming problem. For example, if you want to ensure that only a single instance of a class exists, then you can use the Singleton design pattern which suggests the best way to create a class that can only have one object.",
+                Meta = "Nothing to read...",
+                UrlSlug = "design-patterns-information-2",
+                Published = true,
+                PostedDate = new DateTime(2021, 10, 2, 8, 33, 2),
+                ModifiedDate = null,
+                ViewCount = 30,
+                Author = authors[2],
+                Category = categories[4],
+                Tags = new List<Tag>()
+                {
+                    tags[18]
+                }
+            },
+            new()
+            {
+
+                Title = "Design Patterns Information (3)",
+                ShortDescription = "Design pattern in software engineering is a general, reusable solution to a commonly occurring problem in software design.",
+                Description = "Design patterns are used to solve these commonly occurring problems in the development phase so that we can minimize the problems after deployment. A design pattern suggests a specific implementation for the specific object-oriented programming problem. For example, if you want to ensure that only a single instance of a class exists, then you can use the Singleton design pattern which suggests the best way to create a class that can only have one object.",
+                Meta = "Nothing to read...",
+                UrlSlug = "design-patterns-information-3",
+                Published = true,
+                PostedDate = new DateTime(2021, 10, 2, 8, 33, 2),
+                ModifiedDate = null,
+                ViewCount = 23,
+                Author = authors[3],
+                Category = categories[4],
+                Tags = new List<Tag>()
+                {
+                    tags[18]
+                }
+            },
+            new()
+            {
+
+                Title = "Design Patterns Information (4)",
+                ShortDescription = "Design pattern in software engineering is a general, reusable solution to a commonly occurring problem in software design.",
+                Description = "Design patterns are used to solve these commonly occurring problems in the development phase so that we can minimize the problems after deployment. A design pattern suggests a specific implementation for the specific object-oriented programming problem. For example, if you want to ensure that only a single instance of a class exists, then you can use the Singleton design pattern which suggests the best way to create a class that can only have one object.",
+                Meta = "Nothing to read...",
+                UrlSlug = "design-patterns-information-4",
+                Published = true,
+                PostedDate = new DateTime(2021, 10, 2, 8, 33, 2),
+                ModifiedDate = null,
+                ViewCount = 9,
+                Author = authors[4],
+                Category = categories[4],
+                Tags = new List<Tag>()
+                {
+                    tags[18]
+                }
+            },
+            new()
+            {
+                Title = "Architecture Art (1)",
                 ShortDescription = "Architecture is the art and technique of designing and building, as distinguished from the skills associated with construction.",
                 Description = "It is both the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other structures. The term comes from Latin architectura; from Ancient Greek ἀρχιτέκτων (arkhitéktōn) 'architect'; from ἀρχι- (arkhi-) 'chief', and τέκτων (téktōn) 'creator'. Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art. Historical civilizations are often identified with their surviving architectural achievements.",
                 Meta = "Nothing to read...",
-                UrlSlug = "architecture-art",
+                UrlSlug = "architecture-art-1",
                 Published = true,
                 PostedDate = new DateTime(2021, 9, 28, 13, 48, 4),
                 ModifiedDate = null,
@@ -189,16 +318,52 @@ public class DataSeeder : IDataSeeder
             },
             new()
             {
-                Title = "Firebase Cloud Messaging",
+                Title = "Architecture Art (2)",
+                ShortDescription = "Architecture is the art and technique of designing and building, as distinguished from the skills associated with construction.",
+                Description = "It is both the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other structures. The term comes from Latin architectura; from Ancient Greek ἀρχιτέκτων (arkhitéktōn) 'architect'; from ἀρχι- (arkhi-) 'chief', and τέκτων (téktōn) 'creator'. Architectural works, in the material form of buildings, are often perceived as cultural symbols and as works of art. Historical civilizations are often identified with their surviving architectural achievements.",
+                Meta = "Nothing to read...",
+                UrlSlug = "architecture-art-2",
+                Published = true,
+                PostedDate = new DateTime(2021, 9, 28, 13, 48, 4),
+                ModifiedDate = null,
+                ViewCount = 13,
+                Author = authors[4],
+                Category = categories[1],
+                Tags = new List<Tag>()
+                {
+                    tags[0]
+                }
+            },
+            new()
+            {
+                Title = "Firebase Cloud Messaging (1)",
                 ShortDescription = "Firebase Cloud Messaging (FCM) is a cross-platform messaging solution that lets you reliably send messages at no cost.",
                 Description = "Using FCM, you can notify a client app that new email or other data is available to sync. You can send notification messages to drive user re-engagement and retention. For use cases such as instant messaging, a message can transfer a payload of up to 4 KB to a client app.",
                 Meta = "Nothing to read...",
-                UrlSlug = "firebase-cloud-messaging",
+                UrlSlug = "firebase-cloud-messaging-1",
                 Published = true,
                 PostedDate = new DateTime(2021, 10, 5, 14, 23, 6),
                 ModifiedDate = null,
                 ViewCount = 15,
                 Author = authors[3],
+                Category = categories[2],
+                Tags = new List<Tag>()
+                {
+                    tags[0]
+                }
+            },
+            new()
+            {
+                Title = "Firebase Cloud Messaging (2)",
+                ShortDescription = "Firebase Cloud Messaging (FCM) is a cross-platform messaging solution that lets you reliably send messages at no cost.",
+                Description = "Using FCM, you can notify a client app that new email or other data is available to sync. You can send notification messages to drive user re-engagement and retention. For use cases such as instant messaging, a message can transfer a payload of up to 4 KB to a client app.",
+                Meta = "Nothing to read...",
+                UrlSlug = "firebase-cloud-messaging-2",
+                Published = true,
+                PostedDate = new DateTime(2021, 10, 5, 14, 23, 6),
+                ModifiedDate = null,
+                ViewCount = 32,
+                Author = authors[4],
                 Category = categories[2],
                 Tags = new List<Tag>()
                 {
