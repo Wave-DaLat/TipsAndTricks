@@ -17,20 +17,41 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">
-                        @Model.Title
+                        <a class="text-decoration-none text-dark"
+                           asp-controller="Blog"
+                           asp-action="Post"
+                           asp-route-year="@Model.PostedDate.Year"
+                           asp-route-month="@Model.PostedDate.Month"
+                           asp-route-day="@Model.PostedDate.Day"
+                           asp-route-slug="@Model.UrlSlug"
+                           title="@Model.Title">
+                            @Model.Title
+                        </a>
                     </h5>
                     <p class="card-text">
                         <small class="text-muted">
                             Tác giả:
                         </small>
-                        <span class="text-primary">
-                            @Model.Author.FullName
+                        <span>
+                            <a class="text-primary text-decoration-none"
+                               asp-controller="Blog"
+                               asp-action="Author"
+                               asp-route-slug="@Model.UrlSlug"
+                               title="@Model.Author">
+                                @Model.Author.FullName
+                            </a>
                         </span>
                         <small class="text-muted">
                             Chủ đề:
                         </small>
-                        <span class="text-primary">
-                            @Model.Category.Name
+                        <span>
+                            <a class="text-primary text-decoration-none"
+                               asp-controller="Blog"
+                               asp-action="Category"
+                               asp-route-slug="@Model.UrlSlug"
+                               title="@Model.Category">
+                                @Model.Category.UrlSlug
+                            </a>
                         </span>
                     </p>
                     <p class="card-text">
