@@ -23,8 +23,7 @@
                            asp-route-year="@Model.PostedDate.Year"
                            asp-route-month="@Model.PostedDate.Month"
                            asp-route-day="@Model.PostedDate.Day"
-                           asp-route-slug="@Model.UrlSlug"
-                           title="@Model.Title">
+                           asp-route-slug="@Model.UrlSlug">
                             @Model.Title
                         </a>
                     </h5>
@@ -36,8 +35,7 @@
                             <a class="text-primary text-decoration-none"
                                asp-controller="Blog"
                                asp-action="Author"
-                               asp-route-slug="@Model.UrlSlug"
-                               title="@Model.Author">
+                               asp-route-slug="@Model.Author.UrlSlug">
                                 @Model.Author.FullName
                             </a>
                         </span>
@@ -48,8 +46,7 @@
                             <a class="text-primary text-decoration-none"
                                asp-controller="Blog"
                                asp-action="Category"
-                               asp-route-slug="@Model.UrlSlug"
-                               title="@Model.Category">
+                               asp-route-slug="@Model.UrlSlug">
                                 @Model.Category.UrlSlug
                             </a>
                         </span>

@@ -1,6 +1,7 @@
 ﻿<div class="mb-4">
     <form asp-controller="Blog"
           asp-action="Index"
+          asp-area=""
           method="get">
         <div class="input-group mb-3">
             <input type="text"
@@ -11,7 +12,7 @@
                    aria-describedby="btnSearchPost" />
 
             <button class="btn btn-outline-secondary"
-                    type="button"
+                    type="submit"
                     id="btnSearchPost">
                 <i class="fa fa-search"></i>
             </button>
