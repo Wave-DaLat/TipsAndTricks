@@ -10,12 +10,6 @@ public interface IBlogRepository
 
     Task IncreaseViewCountAsync(int postId, CancellationToken cancellationToken = default);
 
-    Task<Author> GetAuthorAsync(string slug, CancellationToken cancellationToken = default);
-
-    Task<Author> GetAuthorByIdAsync(int authorId);
-
-    Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default);
-
     Task<IList<Post>> GetPostsAsync(PostQuery condition, int pageNumber, int pageSize, CancellationToken cancellationToken = default);
 
     Task<Post> GetPostAsync(int year, int month, string slug, CancellationToken cancellationToken = default);
