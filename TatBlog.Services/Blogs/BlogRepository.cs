@@ -38,35 +38,6 @@ public class BlogRepository : IBlogRepository
                 cancellationToken);
     }
 
-    public async Task<Author> GetAuthorAsync(string slug, CancellationToken cancellationToken = default)
-    {
-        return await _context.Set<Author>()
-            .FirstOrDefaultAsync(a => a.UrlSlug == slug, cancellationToken);
-    }
-
-    public async Task<Author> GetAuthorByIdAsync(int authorId)
-    {
-        return await _context.Set<Author>().FindAsync(authorId);
-    }
-
-    public async Task<IList<AuthorItem>> GetAuthorsAsync(CancellationToken cancellationToken = default)
-    {
-        return await _context.Set<Author>()
-            .OrderBy(a => a.FullName)
-            .Select(a => new AuthorItem()
-            {
-                Id = a.Id,
-                FullName = a.FullName,
-                Email = a.ToString(),
-                JoinedDate = a.JoinedDate,
-                ImageUrl = a.ImageUrl,
-                UrlSlug = a.UrlSlug,
-                Notes = a.Notes,
-                PostCount = a.Posts.Count(p => p.Published)
-            })
-            .ToListAsync(cancellationToken);
-    }
-
     public async Task<IList<Post>> GetPostsAsync(
         PostQuery condition,
         int pageNumber,

@@ -14,17 +14,20 @@ public class PostsController : Controller
 {
     private readonly ILogger<PostsController> _logger;
     private readonly IBlogRepository _blogRepository;
+    private readonly IAuthorRepository _authorRepository;
     private readonly IMediaManager _mediaManager;
     private readonly IMapper _mapper;
 
     public PostsController(
         ILogger<PostsController> logger,
         IBlogRepository blogRepository,
+        IAuthorRepository authorRepository,
         IMediaManager mediaManager,
         IMapper mapper)
     {
         _logger = logger;
         _blogRepository = blogRepository;
+        _authorRepository = authorRepository;
         _mediaManager = mediaManager;
         _mapper = mapper;
     }
@@ -139,7 +142,7 @@ public class PostsController : Controller
 
     private async Task PopulatePostFilterModelAsync(PostFilterModel model)
     {
-        var authors = await _blogRepository.GetAuthorsAsync();
+        var authors = await _authorRepository.GetAuthorsAsync();
         var categories = await _blogRepository.GetCategoriesAsync();
 
         model.AuthorList = authors.Select(a => new SelectListItem()
@@ -157,7 +160,7 @@ public class PostsController : Controller
 
     private async Task PopulatePostEditModelAsync(PostEditModel model)
     {
-        var authors = await _blogRepository.GetAuthorsAsync();
+        var authors = await _authorRepository.GetAuthorsAsync();
         var categories = await _blogRepository.GetCategoriesAsync();
 
         model.AuthorList = authors.Select(a => new SelectListItem()
