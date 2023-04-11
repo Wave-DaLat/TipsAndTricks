@@ -62,30 +62,23 @@ public class PostValidator : AbstractValidator<PostEditModel>
             });
     }
 
-    // Kiểm tra xem người dùng đã nhập nhập ít nhất 1 thẻ (tag)
     private bool HasAtLeastOneTag(
         PostEditModel postModel, string selectedTags)
     {
         return postModel.GetSelectedTags().Any();
     }
 
-    // Kiểm tra xem bài viết đã có hình ảnh chưa.
-    // Nếu chưa có, bắt buộc người dùng phải chọn file.
     private async Task<bool> SetImageIfNotExist(
         PostEditModel postModel,
         IFormFile imageFile,
         CancellationToken cancellationToken)
     {
-        // Lấy thông tin bài viết từ CSDL
         var post = await _blogRepository.GetPostByIdAsync(
             postModel.Id, false, cancellationToken);
 
-        // Nếu bài viết đã có hình ảnh => Không bắt buộc chọn file
         if (!string.IsNullOrWhiteSpace(post?.ImageUrl))
             return true;
 
-        // Ngược lại (bài viết chưa có hình ảnh), kiểm tra xem
-        // người dùng đã chọn file hay chưa. Nếu chưa thì báo lỗi.
         return imageFile is { Length: > 0 };
     }
 }

@@ -14,16 +14,19 @@ public class BlogDbContext : DbContext
 
     public DbSet<Tag> Tags { get; set; }
 
-    public BlogDbContext(DbContextOptions<BlogDbContext> options)
-        : base(options)
+    public DbSet<Subscriber> Subscribers { get; set; }
+
+    public DbSet<Comment> Comments { get; set; }
+
+    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(@"Server=None;Database=TatBlog;Trusted_Connection=True;
-                                    MultipleActiveResultSets=True;TrustServerCertificate=True");
-    }
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlServer(@"Server=None;Database=TatBlog;Trusted_Connection=True;
+    //                                MultipleActiveResultSets=True;TrustServerCertificate=True");
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

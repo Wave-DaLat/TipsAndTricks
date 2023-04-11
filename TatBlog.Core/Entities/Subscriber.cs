@@ -1,4 +1,4 @@
-﻿using TatBlog.Core.Constracts;
+using TatBlog.Core.Constracts;
 
 namespace TatBlog.Core.Entities;
 
@@ -10,11 +10,13 @@ public class Subscriber : IEntity
 
     public DateTime SubDated { get; set; }
 
-    public DateTime UnSubDated { get; set; }
+    public DateTime? UnSubDated { get; set; }
 
     public string CancelReason { get; set; }
 
     public bool ForceLock { get; set; }
+
+    public bool UnsubscribeVoluntary { get; set; }
 
     public string AdminNotes { get; set; }
 }

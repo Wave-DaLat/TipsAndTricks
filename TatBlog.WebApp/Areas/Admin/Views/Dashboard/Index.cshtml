@@ -1,7 +1,85 @@
 ﻿@{
-    ViewData["PageTitle"] = "Bảng điều khiển";
+  ViewData["Title"] = "Bảng điều khiển";
+
+  var TotalOfPosts = ViewData["TotalOfPosts"];
+  var TotalOfUnpublishedPosts = ViewData["TotalOfUnpublishedPosts"];
+  var TotalOfCategories = ViewData["TotalOfCategories"];
+  var TotalOfAuthors = ViewData["TotalOfAuthors"];
+  var TotalOfWaitingComment = ViewData["TotalOfWaitingComment"];
+  var TotalOfSubscriber = ViewData["TotalOfSubscriber"];
+  var TotalOfNewestSubscriberInDay = ViewData["TotalOfNewestSubscriberInDay"];
 }
 
-<h1>
-    Đây là khu vực dành cho người quản trị viên
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-primary">
+          <i class="fa fa-code-fork"></i>
+          <span class="count-numbers">@TotalOfPosts</span>
+          <span class="count-name">Số bài viết</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-danger">
+          <i class="fa fa-ticket"></i>
+          <span class="count-numbers">@TotalOfUnpublishedPosts</span>
+          <span class="count-name">Số bài viết chưa xuất bản</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-success">
+          <i class="fa fa-database"></i>
+          <span class="count-numbers">@TotalOfCategories</span>
+          <span class="count-name">Số lượng chủ đề</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-info">
+          <i class="fa fa-users"></i>
+          <span class="count-numbers">@TotalOfAuthors</span>
+          <span class="count-name">Số lượng tác giả</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-secondary">
+          <i class="fa-solid fa-cube"></i>
+          <span class="count-numbers">@TotalOfWaitingComment</span>
+          <span class="count-name">Số lượng bình luận đang chờ phê duyệt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-warning">
+          <i class="fa-solid fa-scribble"></i>
+          <span class="count-numbers">@TotalOfSubscriber</span>
+          <span class="count-name">Số lượng người theo dõi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body card-counter text-white bg-dark">
+          <i class="fa-solid fa-compass-drafting"></i>
+          <span class="count-numbers">@TotalOfNewestSubscriberInDay</span>
+          <span class="count-name">Số lượng người mới theo dõi đăng ký (trong ngày)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
