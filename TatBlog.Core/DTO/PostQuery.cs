@@ -1,4 +1,4 @@
-﻿namespace TatBlog.Core.DTO;
+namespace TatBlog.Core.DTO;
 
 public class PostQuery
 {

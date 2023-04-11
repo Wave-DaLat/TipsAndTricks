@@ -1,4 +1,4 @@
-﻿using TatBlog.Core.Constracts;
+using TatBlog.Core.Constracts;
 
 namespace TatBlog.Core.Entities;
 
