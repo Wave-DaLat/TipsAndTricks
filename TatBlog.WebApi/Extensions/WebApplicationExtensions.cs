@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NLog.Web;
+using System.Text.Json.Serialization;
 using TatBlog.Data.Contexts;
 using TatBlog.Services.Blogs;
 using TatBlog.Services.Media;
@@ -12,6 +12,10 @@ public static class WebApplicationExtensions
     public static WebApplicationBuilder ConfigureServices(
         this WebApplicationBuilder builder)
     {
+        builder.Services.AddOptions();
+
+        builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+
         builder.Services.AddMemoryCache();
 
         builder.Services.AddDbContext<BlogDbContext>(options =>
@@ -19,14 +23,16 @@ public static class WebApplicationExtensions
                 builder.Configuration
                     .GetConnectionString("DefaultConnection")));
 
-        builder.Services
-            .AddScoped<ITimeProvider, LocalTimeProvider>();
-        builder.Services
-            .AddScoped<IMediaManager, LocalFileSystemMediaManager>();
-        builder.Services
-            .AddScoped<IBlogRepository, BlogRepository>();
-        builder.Services
-            .AddScoped<IAuthorRepository, AuthorRepository>();
+        builder.Services.AddTransient<SendMailService>();
+        builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+        builder.Services.AddScoped<IBlogRepository, BlogRepository>();
+        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+        builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+        builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+        builder.Services.AddScoped<IMediaManager, LocalFileSystemMediaManager>();
+        builder.Services.AddScoped<ITagRepository, TagRepository>();
+        builder.Services.AddScoped<ITimeProvider, LocalTimeProvider>();
+        builder.Services.AddScoped<ISubscriberRepository, SubscriberRepository>();
 
         return builder;
     }
@@ -46,21 +52,14 @@ public static class WebApplicationExtensions
         return builder;
     }
 
-    // Cấu trúc việc sử dụng NLog
-    public static WebApplicationBuilder ConfigureNLog(
-        this WebApplicationBuilder builder )
-    {
-        builder.Logging.ClearProviders();
-        builder.Host.UseNLog();
-
-        return builder;
-    }
-
     public static WebApplicationBuilder ConfigureSwaggerOpenApi(
         this WebApplicationBuilder builder )
     {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddControllersWithViews()
+                            .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
         return builder;
     }

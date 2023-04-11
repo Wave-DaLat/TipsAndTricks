@@ -4,18 +4,18 @@
     <h3 class="text-success mb-2">
         Các chủ đề
     </h3>
-
     <ul class="list-group">
         @foreach (var item in Model)
         {
-            <li class="list-group-item">
-                <a asp-controller="Blog"
+            <li class="list-group-item text-primary">
+                <a title="@item.Description"
+                   style="text-decoration: none;"
+                   asp-controller="Blog"
                    asp-action="Category"
-                   asp-route-slug="@item.UrlSlug"
-                   title="@item.Description">
+                   asp-route-slug="@item.UrlSlug">
                     @item.Name
                     <span>(@item.PostCount)</span>
-               </a>
+                </a>
             </li>
         }
     </ul>
