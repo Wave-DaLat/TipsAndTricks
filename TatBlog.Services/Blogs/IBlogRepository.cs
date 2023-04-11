@@ -57,4 +57,40 @@ public interface IBlogRepository
     Task<Post> CreateOrUpdatePostAsync(Post post, IEnumerable<string> tags, CancellationToken cancellationToken = default);
 
     Task<bool> IsPostSlugExistedAsync(int postId, string slug, CancellationToken cancellationToken = default);
+
+    Task<Tag> GetTagBySlugAsync(string slug, CancellationToken cancellationToken = default);
+
+    Task<IList<TagItem>> GetTagListWithPostCountAsync(CancellationToken cancellationToken = default);
+
+    Task DeleteTagByIdAsync(int? id, CancellationToken cancellationToken = default);
+
+    Task<Category> GetCategoryBySlugAsync(string slug, CancellationToken cancellationToken = default);
+
+    Task<Category> GetCategoryByIdAsync(int id, CancellationToken cancellationToken = default);
+
+    Task AddOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default);
+
+    Task DeleteCategoryByIdAsync(int? id, CancellationToken cancellationToken = default);
+
+    Task<bool> CheckCategorySlugExisted(string slug);
+
+    Task<IList<PostInMonthItem>> CountPostInMonthAsync(int monthCount, CancellationToken cancellationToken = default);
+
+    Task<Post> GetPostByIdAsync(int id, CancellationToken cancellationToken = default);
+
+    Task AddOrUpdatePostAsync(Post post, CancellationToken cancellationToken = default);
+
+    Task ChangePostStatusAsync(int id, CancellationToken cancellationToken = default);
+
+    Task<IList<Post>> GetRandomPostAsync(int n, CancellationToken cancellationToken = default);
+
+    Task<Author> GetAuthorByIdAsync(int id, CancellationToken cancellationToken);
+
+    Task<Author> GetAuthorBySlugAsync(string slug, CancellationToken cancellationToken);
+
+    Task<IPagedList<AuthorItem>> GetAuthorsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default);
+
+    Task AddOrUpdateAuthorAsync(Author author, CancellationToken cancellationToken = default);
+
+    Task<IList<Author>> Find_N_MostPostByAuthorAsync(int n, CancellationToken cancellationToken = default);
 }

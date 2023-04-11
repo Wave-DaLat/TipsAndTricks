@@ -25,4 +25,21 @@ public class PostQuery
     public int? Year { get; set; }
 
     public int? Month { get; set; }
+
+    public string Slug { get; set; }
+
+    public string PostedDate { get; set; }
+
+    public string Tags { get; set; }
+
+    public IList<string> SelectedTag { get; set; }
+
+    public IEnumerable<string> SelectedAuthor { get; set; }
+
+    public IEnumerable<string> SelectedCategory { get; set; }
+
+    public void GetTagListAsync()
+    {
+        SelectedTag = (Tags ?? "").Split(new[] { ",", ";", ".", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+    }
 }
