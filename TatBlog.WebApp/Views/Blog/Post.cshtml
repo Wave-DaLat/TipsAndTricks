@@ -1,0 +1,89 @@
+@model Post
+
+@{
+    ViewData["Title"] = "Chi tiết bài viết";
+    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl) ? "/images/loc.jpg" : $"/{Model.ImageUrl}";
+
+    var comments = ViewData["Comments"] as IPagedList<Comment>;
+}
+
+<div class="text-danger">@Html.ValidationMessage("denied access")</div>
+
+<div class="p-4 mb-5">
+    <h1>Tiêu đề: @Model.Title</h1>
+    <p>Ngày tạo: <i>@Html.DisplayFor(model => model.PostedDate)</i></p>
+    <img src="@imageUrl" alt="@Model.Title" class="img-thumbnail">
+    <hr>
+    <p>
+        <h5>
+            Giới thiệu bài viết:
+        </h5>
+        @Html.Raw(Model.ShortDescription)
+    </p>
+    <p>
+        <h5>
+            Mô tả bài viết:
+        </h5>
+        @Html.Raw(Model.Description)
+    </p>
+    <h6>
+        Lượt xem: <text class="text-primary">@Model.ViewCount</text>
+    </h6>
+    <h6>
+        Tác giả: <text class="text-primary">@Model.Author.FullName</text>
+    </h6>
+    <h6>
+        Chủ đề: <text class="text-primary">@Model.Category.Name</text>
+    </h6>
+    <figure>
+        Thẻ:
+        @foreach (var tag in Model.Tags)
+        {
+            <h6>
+                <text class="text-primary">@tag.Name</text>
+            </h6>
+        }
+    </figure>
+</div>
+
+<h2 class="row p-4 mb-3">
+    <span class="col-sm-3 badge rounded-pill bg-black">Các bình luận</span>
+
+    @foreach (var comment in comments)
+    {
+        <partial name="_CommentItem" model="comment" />
+    }
+
+    <partial name="_Pager" model="@comments" />
+</h2>
+
+<form method="post"
+      enctype="multipart/form-data"
+      class="row gy-2 gx-3 align-items-center"
+      asp-area=""
+      asp-controller="Blog"
+      asp-action="Comment">
+    <input type="hidden" name="postId" value="@Model.Id" />
+    <h2 class="row mb-3">
+        <span class="col-sm-3 badge rounded-pill bg-primary">Bình luận về bài viết</span>
+    </h2>
+    <div class="row mb-3">
+        <label for="commentUsername" class="col-sm-2 col-form-label">Tên của bạn</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="commentUsername" id="commentUsername" required>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="commentContent" class="col-sm-2 col-form-label">Nội dung</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" style="max-height: 300px;" rows="100" id="commentContent" name="commentContent" required></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="d-block d-flex flex-row-reverse">
+            <button type="submit" class="btn btn-primary w-25">
+                Bình luận
+            </button>
+        </div>
+    </div>
+</form>

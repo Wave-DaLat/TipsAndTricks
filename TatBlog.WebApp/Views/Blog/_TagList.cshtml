@@ -2,11 +2,11 @@
 
 @foreach (var item in Model)
 {
-    <a asp-controller="Blog"
-       asp-action="Tag"
-       asp-route-slug="@item.UrlSlug"
+    <a class="btn btn-sm btn-outline-secondary"
        title="Tag: @item.Name"
-       class="btn btn-sm btn-outline-secondary">
+       asp-controller="Blog"
+       asp-action="Tag"
+       asp-route-slug="@item.UrlSlug">
         @item.Name
-   </a>
+    </a>
 }
