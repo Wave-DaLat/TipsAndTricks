@@ -11,7 +11,7 @@ public class ApiResponse
 
     public IList<string> Errors { get; init; }
 
-    protected ApiResponse() 
+    protected ApiResponse()
     {
         StatusCode = HttpStatusCode.OK;
         Errors = new List<string>();
@@ -28,7 +28,7 @@ public class ApiResponse
         };
     }
 
-    public static ApiResponse<T> FaiWithResult<T>(
+    public static ApiResponse<T> FailWithResult<T>(
         HttpStatusCode statusCode,
         T result,
         params string[] errorMessages)
@@ -45,7 +45,7 @@ public class ApiResponse
         HttpStatusCode statusCode,
         params string[] errorMessages)
     {
-        if (errorMessages == null || errorMessages.Length == 0)
+        if (errorMessages is null or { Length: 0 })
         {
             throw new ArgumentNullException(nameof(errorMessages));
         }
@@ -56,6 +56,7 @@ public class ApiResponse
             Errors = new List<string>(errorMessages)
         };
     }
+
 
     public static ApiResponse Fail(
         HttpStatusCode statusCode,
