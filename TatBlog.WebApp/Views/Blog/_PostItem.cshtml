@@ -1,22 +1,24 @@
 ﻿@model Post
 
 @{
-    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl) ? "/images/loc.jpg" : $"/{Model.ImageUrl}";
-    var pagerQuery = (ViewData["PagerQuery"] as PagerQuery) ?? new PagerQuery();
+    var imageUrl = string.IsNullOrWhiteSpace(Model.ImageUrl)
+                ? "/images/image_1.jpg"
+                : $"/{Model.ImageUrl}";
 }
 
 <article class="blog-entry mb-4">
     <div class="card">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="@imageUrl" alt="@Model.Title" class="card-img">
+                <img src="@imageUrl"
+                     class="card-img"
+                     alt="@Model.Title" />
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a title="@Model.Title"
-                           style="text-decoration: none;"
-                           asp-controller="@pagerQuery.Controller"
+                        <a class="text-decoration-none text-dark"
+                           asp-controller="Blog"
                            asp-action="Post"
                            asp-route-year="@Model.PostedDate.Year"
                            asp-route-month="@Model.PostedDate.Month"
@@ -29,10 +31,9 @@
                         <small class="text-muted">
                             Tác giả:
                         </small>
-                        <span class="text-primary">
-                            <a title="@Model.Author.FullName"
-                               style="text-decoration: none;"
-                               asp-controller="@pagerQuery.Controller"
+                        <span>
+                            <a class="text-primary text-decoration-none"
+                               asp-controller="Blog"
                                asp-action="Author"
                                asp-route-slug="@Model.Author.UrlSlug">
                                 @Model.Author.FullName
@@ -41,13 +42,12 @@
                         <small class="text-muted">
                             Chủ đề:
                         </small>
-                        <span class="text-primary">
-                            <a title="@Model.Category.Name"
-                               style="text-decoration: none;"
-                               asp-controller="@pagerQuery.Controller"
+                        <span>
+                            <a class="text-primary text-decoration-none"
+                               asp-controller="Blog"
                                asp-action="Category"
-                               asp-route-slug="@Model.Category.UrlSlug">
-                                @Model.Category.Name
+                               asp-route-slug="@Model.UrlSlug">
+                                @Model.Category.UrlSlug
                             </a>
                         </span>
                     </p>
@@ -58,16 +58,16 @@
                         <partial name="_TagList" model="@Model.Tags" />
                     </div>
                     <div class="text-end">
-                        <a class="btn btn-primary"
-                           title="@Model.Title"
-                           asp-controller="@pagerQuery.Controller"
+                        <a asp-controller="Blog"
                            asp-action="Post"
                            asp-route-year="@Model.PostedDate.Year"
                            asp-route-month="@Model.PostedDate.Month"
                            asp-route-day="@Model.PostedDate.Day"
-                           asp-route-slug="@Model.UrlSlug">
+                           asp-route-slug="@Model.UrlSlug"
+                           class="btn btn-primary"
+                           title="@Model.Title">
                             Xem chi tiết
-                        </a>
+                       </a>
                     </div>
                 </div>
             </div>
