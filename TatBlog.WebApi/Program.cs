@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
     // Add services to the container.
     builder
         .ConfigureCors()
+        .ConfigureNLog()
         .ConfigureServices()
         .ConfigureSwaggerOpenApi()
         .ConfigureMapster()
@@ -21,12 +22,6 @@ var app = builder.Build();
 
     // Configure API endpoints
     app.MapAuthorEndpoints();
-    app.MapCategoryEndpoints();
-    app.MapCommentEndpoints();
-    app.MapPostEndpoints();
-    app.MapSubscriberEndpoints();
-    app.MapTagEndpoints();
-    app.MapDashboardEndpoints();
 
     app.Run();
 }

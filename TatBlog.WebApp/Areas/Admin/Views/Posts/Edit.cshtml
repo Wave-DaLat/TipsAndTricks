@@ -1,133 +1,163 @@
-﻿@model PostEditModel
+﻿@model TatBlog.WebApp.Areas.Admin.Models.PostEditModel;
 
 @{
-    ViewData["Title"] = "Thêm/ Cập nhập bài viết";
+    ViewData["PageTitle"] = "Thêm/Cập nhật bài viết";
 }
 
-<h1>Thêm/ Cập nhập bài viết</h1>
+<h1>Thêm/Cập nhất bài viết</h1>
 
-<form method="post"
-      enctype="multipart/form-data"
-      asp-area="Admin"
+<form asp-area="Admin"
       asp-controller="Posts"
-      asp-action="Edit">
-    <div asp-validation-summary="ModelOnly"></div>
-    <input type="hidden" asp-for="Id">
+      asp-action="Edit"
+      enctype="multipart/form-data"
+      method="post">
+      <div asp-validation-summary="ModelOnly"></div>
+      <input type="hidden" asp-for="Id" />
+
     <div class="row mb-3">
-        <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+        <label asp-for="Title"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Title">
-            <span class="text-danger"
-                  asp-validation-for="Title"></span>
+            <input type="text" class="form-control" asp-for="Title" />
+            <span asp-validation-for="Title"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="UrlSlug" class="col-sm-2 col-form-label"></label>
+        <label asp-for="UrlSlug"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="UrlSlug">
-            <span class="text-danger"
-                  asp-validation-for="UrlSlug"></span>
+            <input type="text" class="form-control" asp-for="UrlSlug" />
+            <span asp-validation-for="UrlSlug"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="ShortDescription" class="col-sm-2 col-form-label"></label>
+        <label asp-for="ShortDescription"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="ShortDescription">
-            <span class="text-danger"
-                  asp-validation-for="ShortDescription"></span>
+            <textarea class="form-control"
+                      asp-for="ShortDescription"></textarea>
+            <span asp-validation-for="ShortDescription"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+        <label asp-for="Description"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Description">
-            <span class="text-danger"
-                  asp-validation-for="Description"></span>
+            <textarea class="form-control"
+                      asp-for="Description" rows="10"></textarea>
+            <span asp-validation-for="Description"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="Meta" class="col-sm-2 col-form-label"></label>
+        <label asp-for="Meta"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Meta">
-            <span class="text-danger"
-                  asp-validation-for="Meta"></span>
+            <input type="text" class="form-control" asp-for="Meta" />
+            <span asp-validation-for="Meta"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="AuthorId" class="col-sm-2 col-form-label"></label>
+        <label asp-for="AuthorId"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <select class="form-control"
-                    asp-for="AuthorId"
-                    asp-items="Model.AuthorList">
-                <option value="">-- Chọn tác giả --</option>
+                      asp-for="AuthorId" asp-items="Model.AuthorList">
+                  <option value="">-- Chọn tác giả --</option>
             </select>
-            <span class="text-danger"
-                  asp-validation-for="AuthorId"></span>
+            <span asp-validation-for="AuthorId"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="CategoryId" class="col-sm-2 col-form-label"></label>
+        <label asp-for="CategoryId"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <select class="form-control"
-                    asp-for="CategoryId"
-                    asp-items="Model.CategoryList">
-                <option value="">-- Chọn tác giả --</option>
+                    asp-for="CategoryId" asp-items="Model.CategoryList">
+                <option value="">-- Chọn chủ đề --</option>
             </select>
-            <span class="text-danger"
-                  asp-validation-for="CategoryId"></span>
+            <span asp-validation-for="CategoryId"
+                  class="text-danger"></span>
         </div>
     </div>
+
     <div class="row mb-3">
-        <label asp-for="SelectedTags" class="col-sm-2 col-form-label"></label>
+        <label asp-for="SelectedTags"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <textarea class="form-control" rows="10" asp-for="SelectedTags"></textarea>
-            <span class="text-danger"
-                  asp-validation-for="SelectedTags"></span>
+            <textarea class="form-control"
+                      asp-for="SelectedTags" rows="5"></textarea>
+            <span asp-validation-for="SelectedTags"
+                  class="text-danger"></span>
         </div>
     </div>
 
     @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
     {
         <div class="row mb-3">
-            <label asp-for="ImageUrl" class="col-sm-2 col-form-label"></label>
+            <label asp-for="ImageUrl"
+                   class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <img src="/@Model.ImageUrl" alt="" class="img-thumbnail">
+                <img src="@Model.ImageUrl" />
             </div>
         </div>
     }
 
     <div class="row mb-3">
-        <label asp-for="ImageFile" class="col-sm-2 col-form-label"></label>
+        <label asp-for="ImageFile"
+               class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input type="file" class="form-control" asp-for="ImageFile">
+            <input type="file"
+                   class="form-control"
+                   asp-for="ImageFile" />
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="col-sm-10 offset-sm-2">
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" asp-for="Published">
-                <label class="form-check-label" asp-for="Published"></label>
+                <input class="form-check-input"
+                       type="checkbox"
+                       asp-for="Published" />
+                <label class="form-check-label"
+                       asp-for="Published"></label>
             </div>
         </div>
     </div>
 
     <div class="text-center">
         <button type="submit" class="btn btn-primary">
-            Lưu các thay đổi
+            Lưu Các Thay Đổi
         </button>
-        <a class="btn btn-danger"
-           asp-area="Admin"
+
+        <a asp-area="Admin"
            asp-controller="Posts"
-           asp-action="Index">
-            Hủy & Quay lại
+           asp-action="Index"
+           class="btn btn-danger">
+            Hủy & Quay lại      
         </a>
     </div>
 </form>
 
 @section scripts
-    {
-    <partial name="_ValidationScriptsPartial" />
+{
+    @*<partial name="_ValidationScriptsPartial" />*@
+    @*@Html.Partial("_ValidationScriptsPartial")*@
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
     <script src="~/lib/speakingurl/speakingurl.min.js"></script>
 
@@ -135,8 +165,7 @@
         $(function () {
             $('#Title').change(function () {
                 var slug = getSlug(this.value);
-                console.log(slug);
-                $('#UrlSlug').val(slug).trigger('blur');
+                $('#UrlSlug').val(slug).trigger('blue');
             });
         });
     </script>

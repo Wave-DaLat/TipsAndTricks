@@ -42,12 +42,6 @@ public static class WebApplicationExtensions
         builder.Services.AddScoped<IMediaManager, LocalFileSystemMediaManager>();
         builder.Services.AddScoped<IBlogRepository, BlogRepository>();
         builder.Services.AddScoped<IDataSeeder, DataSeeder>();
-        builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
-        builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-        builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-        builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
-        builder.Services.AddScoped<ISubscriberRepository, SubscriberRepository>();
-        builder.Services.AddTransient<SendMailService>();
 
         return builder;
     }

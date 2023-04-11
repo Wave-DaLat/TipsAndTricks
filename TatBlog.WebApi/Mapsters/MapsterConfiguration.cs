@@ -23,8 +23,5 @@ public class MapsterConfiguration : IRegister
 
         config.NewConfig<Post, PostDto>();
         config.NewConfig<Post, PostDetail>();
-        config.NewConfig<Post, PostItem>()
-              .Map(dest => dest.AuthorName, src => src.Author.FullName)
-              .Map(dest => dest.Tags, src => src.Tags.Select(t => t.Name));
     }
 }

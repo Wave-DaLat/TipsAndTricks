@@ -1,6 +1,6 @@
 ﻿using TatBlog.Core.Constracts;
 
-namespace TatBlog.Core.DTO;
+namespace TatBlog.WinApp;
 
 public class PagingParams : IPagingParams
 {
@@ -8,7 +8,7 @@ public class PagingParams : IPagingParams
 
     public int PageNumber { get; set; }
 
-    public string SortColumn { get; set; }
+    public string SortColumn { get; set; } = "Id";
 
-    public string SortOrder { get; set; }
+    public string SortOrder { get; set; } = "ASC";
 }
