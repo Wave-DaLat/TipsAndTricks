@@ -1,21 +1,20 @@
 ﻿<div class="mb-4">
-    <form asp-controller="Blog"
+    <form method="get"
+          asp-controller="Blog"
           asp-action="Index"
-          asp-area=""
-          method="get">
+          asp-area="">
         <div class="input-group mb-3">
             <input type="text"
                    class="form-control"
-                   name="k"
-                   placeholder="Enter keyword"
-                   aria-label="Enter keyword"
-                   aria-describedby="btnSearchPost" />
-
-            <button class="btn btn-outline-secondary"
-                    type="submit"
+                   name="keyword"
+                   placeholder="Enter Keyword"
+                   aria-label="Enter Keyword"
+                   aria-describedby="btnSearchPost">
+            <button type="submit"
+                    class="btn btn-outline-secondary"
                     id="btnSearchPost">
                 <i class="fa fa-search"></i>
             </button>
-        </div>  
+        </div>
     </form>
 </div>

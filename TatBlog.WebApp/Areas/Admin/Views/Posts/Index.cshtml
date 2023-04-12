@@ -1,18 +1,18 @@
-﻿@model TatBlog.WebApp.Areas.Admin.Models.PostFilterModel;
-@{
-    ViewData["PageTitle"] = "Danh sách bài viết";
+﻿@{
+    ViewData["Title"] = "Danh sách các bài viết";
 
-    var postsList = ViewBag.PostsList as IPagedList<Post>;
+    var postsList = ViewData["PostsList"] as IPagedList<Post>;
+    var pagerQuery = (ViewData["PagerQuery"] as PagerQuery) ?? new PagerQuery();
 }
 
 <h1>
     Danh sách bài viết
 </h1>
 
-<!-- Hiển thị Form để tìm bài viết -->
+@* Hiển thị Form để tìm kiếm bài viết *@
 <partial name="_PostFilterPane" model="Model" />
 
-@if (postsList != null && postsList.Count > 0)
+@if (postsList?.Count > 0)
 {
     <table class="table table-responsive table-striped">
         <thead>
@@ -28,17 +28,16 @@
             {
                 <tr>
                     <td>
-                        <a asp-area="Admin"
-                           asp-controller="Posts"
-                           asp-action="Edit"
-                           asp-route-id="@post.Id"
-                           class="text-bold">
+                        <a class="text-bold"
+                   asp-area="Admin"
+                   asp-controller="Posts"
+                   asp-action="Edit"
+                   asp-route-id="@post.Id">
                             @post.Title
-                       </a>
-
-                       <p class="text-muted">
-                           @post.ShortDescription
-                       </p>
+                        </a>
+                        <p class="text-muted">
+                            @post.ShortDescription
+                        </p>
                     </td>
                     <td>
                         @post.Author.FullName
@@ -47,12 +46,31 @@
                         @post.Category.Name
                     </td>
                     <td>
-                        @(post.Published ? "Có" : "Không")
+                        <form method="post"
+                              enctype="multipart/form-data"
+                      asp-area="Admin"
+                      asp-controller="Posts"
+                      asp-action="PublishChanged">
+                            <input type="hidden" name="postId" value="@post.Id" />
+                            <select class="form-select" onchange="this.form.submit()">
+                                <option value="" selected="@(post.Published ? true : false)">Có</option>
+                                <option value="" selected="@(post.Published ? false : true)">Không</option>
+                            </select>
+                        </form>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <button type="button" value="@post.Id" class="btn btn-danger" data-bs-target="#deleteModal" data-bs-toggle="modal">
+                                Xóa
+                            </button>
+                        </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
+    <partial name="_Pager" model="@postsList" />
 }
 else
 {
@@ -60,3 +78,49 @@ else
         Không tìm thấy bài viết nào
     </h1>
 }
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xóa bài viết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa bài viết này?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" id="btn-delete-post" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post"
+      name="delete-post-form"
+      enctype="multipart/form-data"
+      asp-area="Admin"
+      asp-controller="Posts"
+      asp-action="DeletePost">
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var postId;
+        var deleteForm = document.forms['delete-post-form'];
+        var btnDeletePost = document.getElementById('btn-delete-post');
+        // When dialog confirm clicked
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            postId = button.val();
+        });
+
+        // When delete post btn clicked
+        btnDeletePost.onclick = function () {
+            deleteForm.action += "/" + postId;
+            deleteForm.submit();
+        }
+    });
+</script>

@@ -1,5 +1,4 @@
 ﻿using System.Linq.Dynamic.Core;
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using TatBlog.Core.Collections;
 using TatBlog.Core.Constracts;
